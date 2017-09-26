@@ -7,7 +7,7 @@ app.use(session({
 }))
 
 app.get('/api/endpoint1', function(req, res, next){
-    req.session.userFav = "spicy jalapenos";
+    req.session.userFav = "spicy jalapeños";
     //Session is an object we can put anything we want on it
     //Sessions are awesome because anything you put on session will be on every req
     //   on every other endpoint that exact same user hits
@@ -18,7 +18,7 @@ app.get('/api/endpoint1', function(req, res, next){
 app.get('/api/endpoint2', function(req, res, next){
     //Assuming endpoint1 was hit before endpoint2
     //Then
-    req.session.userFav // has a value of "spicy jalapenos"
+    req.session.userFav // has a value of "spicy jalapeños"
 })
 
 

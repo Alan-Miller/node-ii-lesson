@@ -25,10 +25,18 @@ app.get('/api/stuff', inlineMiddleware, function(req, res, next){
     //this anonymous function is called next
 }) 
 
-
 app.use(bodyParser.json());
 
-app.get('/api/stuff', inlineMiddleware, function(req, res, next){ 
+function isAdmin() {
+    if (req.user.isAdmin) {
+        next();
+    }
+    else {
+        res.redirect('./login');
+    }
+}
+
+app.get('/api/stuff', inlineMiddleware, isAdmin, function(req, res, next){ 
     //Body-parser is called first
     //then inlineMiddleware
     //then this anonymous function
